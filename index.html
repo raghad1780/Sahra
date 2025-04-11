@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لعبة الحروف</title>
+  <style>
+    body {
+      background: #f8f8f8;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      direction: rtl;
+    }
+    h1 {
+      margin-top: 30px;
+      color: #333;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 60px);
+      gap: 10px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .cell {
+      width: 60px;
+      height: 60px;
+      background: white;
+      border: 2px solid #ccc;
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .cell.correct {
+      background-color: #8bc34a;
+      color: white;
+    }
+    .cell.wrong {
+      background-color: #e57373;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>تخمين الكلمة</h1>
+  <div class="grid" id="grid"></div>
+  <script>
+    const word = "موزة"; // الكلمة المطلوب تخمينها
+    const grid = document.getElementById("grid");
+
+    for (let i = 0; i < word.length; i++) {
+      const cell = document.createElement("div");
+      cell.className = "cell";
+      cell.addEventListener("click", () => {
+        const guess = prompt("ادخل حرف:");
+        if (guess === word[i]) {
+          cell.textContent = guess;
+          cell.classList.add("correct");
+        } else {
+          cell.textContent = guess;
+          cell.classList.add("wrong");
+        }
+      });
+      grid.appendChild(cell);
+    }
+  </script>
+</body>
+</html>
